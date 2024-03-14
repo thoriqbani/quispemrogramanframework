@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Edit Keahlian</h5>
+                        <form action="/dpi/update/<%= id %>" method="POST">
+                            <div class="mb-3">
+                                <label for="nama_keahlian" class="form-label">Nama Alat</label>
+                                <input type="text" class="form-control" name="nama_alattangkap"
+                                    value="<%- nama_dpi %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer') %>

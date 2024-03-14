@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+    <div class="container mt-5">
+        <form action="/dpi/store" method="POST">
+            <div class="mb-3">
+                <label for="nama_keahlian" class="form-label">Nama Alat</label>
+                <input type="text" class="form-control" name="nama_alattangkap" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+            </div>
+        </form>
+    </div>
+<%- include('../partials/footer') %>

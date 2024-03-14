@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+    <div class="container">
+        <%- include('../partials/message') %>
+
+        <div class="row">
+            <div class="col">
+                <a href="/dpi/create" class="btn btn-sm btn-success">Tambah</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama DPI</th>
+                            <th scope="col">luas</th>
+                            <th colspan="2" scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= (i + 1) %></th>
+                            <td><%= data[i].nama_dpi %></td>
+                            <td><%= data[i].luas %></td>
+                            <td>
+                                <a href="/dpi/edit/<%= data[i].id_dpi %>"
+                                    class="btn btn-sm btn-warning">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/dpi/delete/<%= data[i].id_dpi %>"
+                                    class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/header') %>
+      
+      
