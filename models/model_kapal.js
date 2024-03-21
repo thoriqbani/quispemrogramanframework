@@ -3,7 +3,7 @@ const connect = require('../config/db.js')
 class model_kapal {
     static async getAll(){
         return new Promise((resolve, reject) => {
-            connect.query('select * from kapal inner join pemilik on kapal.id_pemilik = pemilik.id_pemilik inner join dpi on kapal.id_dpi = dpi.id_dpi inner join alattangkap on kapal.id_alattangkap = alattangkap.id_alattangkap order by id_kapal desc', (err, rows) => {
+            connect.query('select id_kapal, pemilik.nama_pemilik, kapal.nama_kapal, dpi.nama_dpi, alattangkap.nama_alattangkap from kapal join pemilik on kapal.id_pemilik = pemilik.id_pemilik join dpi on kapal.id_dpi = dpi.id_dpi join alattangkap on kapal.id_alattangkap = alattangkap.id_alattangkap order by id_kapal desc', (err, rows) => {
                 if(err){
                     reject(err);
                 } else {

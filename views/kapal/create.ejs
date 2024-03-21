@@ -6,16 +6,31 @@
         <input type="text" class="form-control" name="nama_kapal" required>
       </div>
       <div class="mb-3">
-        <label for="nama_depan" class="form-label">Nama Depan</label>
-        <input type="text" class="form-control" name="id_pemilik" required>
+        <label for="nama" class="form-label">Nama Pemilik</label>
+        <select class="form-select" aria-label="Pilih Tingkat Keahlian" name="id_pemilik" required>
+          <option selected>Pilih Pemilik</option>
+          <% for(var i=0; i < dataPemilik.length; i++){ %>
+            <option value="<%= dataPemilik[i].id_pemilik %>"><%= dataPemilik[i].nama_pemilik %></option>
+          <% } %>
+        </select>
       </div>
       <div class="mb-3">
-        <label for="nama_belakang" class="form-label">Nama Belakang</label>
-        <input type="text" class="form-control" name="nama_belakang" required>
+        <label for="nama" class="form-label">Nama dpi</label>
+        <select class="form-select" aria-label="Pilih Tingkat Keahlian" name="id_dpi" required>
+          <option selected>Pilih dpi</option>
+          <% for(var i=0; i < dataDPI.length; i++){ %>
+            <option value="<%= dataDPI[i].id_dpi %>"><%= dataDPI[i].nama_dpi %></option>
+          <% } %>
+        </select>
       </div>
       <div class="mb-3">
-        <label for="nama_belakang" class="form-label">Nama Belakang</label>
-        <input type="text" class="form-control" name="nama_belakang" required>
+        <label for="nama" class="form-label">Nama Alat Tangkap</label>
+        <select class="form-select" aria-label="Pilih Tingkat Keahlian" name="id_alattangkap" required>
+          <option selected>Pilih alat tangkap</option>
+          <% for(var i=0; i < dataAlatTangkap.length; i++){ %>
+            <option value="<%= dataAlatTangkap[i].id_alattangkap %>"><%= dataAlatTangkap[i].nama_alattangkap %></option>
+          <% } %>
+        </select>
       </div>
       <div class="mb-3">
         <button type="submit" class="btn btn-sm btn-success">Simpan</button>

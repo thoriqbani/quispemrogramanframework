@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+    <div class="container">
+        <%- include('../partials/message') %>
+
+        <div class="row">
+            <div class="col">
+                <a href="/pemilik/create" class="btn btn-sm btn-success">Tambah</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Pemilik</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">No HP</th>
+                            <th colspan="2" scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= (i + 1) %></th>
+                            <td><%= data[i].nama_pemilik %></td>
+                            <td><%= data[i].alamat %></td>
+                            <td><%= data[i].no_hp %></td>
+                            <td>
+                                <a href="/pemilik/edit/<%= data[i].id_pemilik %>"
+                                    class="btn btn-sm btn-warning">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/pemilik/delete/<%= data[i].id_pemilik %>"
+                                    class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/header') %>
+      
+      

@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
 <div class="container">
   <%- include('../partials/message') %>
     <a href="/kapal/create" class="btn btn-primary btn-sm btn-success">Tambah</a>
@@ -25,8 +26,8 @@
                   <td><%= data[i].nama_alattangkap %></td>
                   
                   <td>
-                    <a href="/kapal/edit/<%= data[i].id %>" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="/kapal/delete/<%= data[i].id %>" class="btn btn-sm btn-danger">Hapus</a>
+                    <a href="/kapal/edit/<%= data[i].id_kapal %>" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/kapal/delete/<%= data[i].id_kapal %>" class="btn btn-sm btn-danger">Hapus</a>
                   </td>
                 </tr>
                 <% } %>

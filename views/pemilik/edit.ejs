@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Edit Pemilik</h5>
+                        <form action="/pemilik/update/<%= id %>" method="POST">
+                            <div class="mb-3">
+                                <label for="nama_keahlian" class="form-label">Nama Pemilik</label>
+                                <input type="text" class="form-control" name="nama_pemilik"
+                                    value="<%- nama_pemilik %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nama_keahlian" class="form-label">Alamat</label>
+                                <input type="text" class="form-control" name="alamat"
+                                    value="<%- alamat %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nama_keahlian" class="form-label">No HP</label>
+                                <input type="text" class="form-control" name="no_hp"
+                                    value="<%- no_hp %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer') %>

@@ -3,6 +3,9 @@ const router = express.Router()
 
 const connect = require('../config/db.js')
 const model_kapal = require('../models/model_kapal.js');
+const model_pemilik = require('../models/model_pemilik.js');
+const model_alattangkap = require('../models/model_alattangkap.js');
+const model_dpi = require('../models/model_dpi.js');
 
 router.get('/', async function(req, res, next){
     let Rows = await model_kapal.getAll();
@@ -11,9 +14,17 @@ router.get('/', async function(req, res, next){
     });
 })
 
-router.get('/create', function(req,res){
+router.get('/create', async function(req,res){
+    let rowsKapal = await model_kapal.getAll();
+    let rowsDPI = await model_dpi.getAll();
+    let rowsPemilik = await model_pemilik.getAll();
+    let rowsAlatTangkap = await model_alattangkap.getAll();
     res.render('kapal/create', {
-        nama_kapal: '',
+        dataKapal: rowsKapal,
+        dataPemilik: rowsPemilik,
+        dataDPI: rowsDPI,
+        dataAlatTangkap: rowsAlatTangkap,
+        id_kapal: '',
         id_pemilik: '',
         id_dpi: '',
         id_alattangkap: '',
@@ -23,13 +34,22 @@ router.get('/create', function(req,res){
 router.get('/edit/(:id)', async function(req, res){
     const id = req.params.id;
     let rows = await model_kapal.getId(id);
+    let rowsKapal = await model_kapal.getAll();
+    let rowsDPI = await model_dpi.getAll();
+    let rowsPemilik = await model_pemilik.getAll();
+    let rowsAlatTangkap = await model_alattangkap.getAll();
 
     res.render('kapal/edit', {
-        id_kapal:rows[0].id,
+        id:rows[0].id_dpi,
+        data_kapal: rowsKapal,
+        data_pemilik: rowsPemilik,
+        data_dpi: rowsDPI,
+        data_alat: rowsAlatTangkap,
+        id_kapal: id,
         nama_kapal: rows[0].nama_kapal,
-        id_pemilik: rows[0].id_pemilik,
-        id_dpi: rows[0].id_dpi,
-        id_alattangkap: rows[0].id_alattangkap,
+        nama_pemilik: rowsPemilik.nama_pemilik,
+        nama_dpi: rowsDPI.nama_dpi,
+        nama_alattangkap: rowsAlatTangkap.nama_alattangkap,
     })
 })
 

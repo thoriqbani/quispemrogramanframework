@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+    <div class="container mt-5">
+        <form action="/pemilik/store" method="POST">
+            <div class="mb-3">
+                <label for="nama_keahlian" class="form-label">Nama Pemilik</label>
+                <input type="text" class="form-control" name="nama_pemilik" required>
+            </div>
+            <div class="mb-3">
+                <label for="nama_keahlian" class="form-label">Alamat</label>
+                <input type="text" class="form-control" name="alamat" required>
+            </div>
+            <div class="mb-3">
+                <label for="nama_keahlian" class="form-label">No HP</label>
+                <input type="text" class="form-control" name="no_hp" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+            </div>
+        </form>
+    </div>
+<%- include('../partials/footer') %>
