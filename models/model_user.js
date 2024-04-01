@@ -65,14 +65,12 @@ class model_user {
 
     static async Delete(id){
         return new Promise((resolve, reject) => {
-
             connect.query('delete from user where id_user = ?', id, function(err, result){
                 if(err){
                     reject(err)
                 } else {
                     resolve(result)
                 }
-                
             })
         })
     }

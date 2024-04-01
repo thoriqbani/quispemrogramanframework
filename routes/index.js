@@ -1,13 +1,25 @@
 var express = require('express');
 var router = express.Router();
-
 const bcrypt = require('bcrypt')
-
 var model_user = require('../models/model_user.js');
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('user/index');
+router.get('/', async function(req, res, next) {
+  try {
+    let id = req.session.userId
+    let data = await model_user.getID(id)
+    if (data.length > 0) {
+      if (data[0].level_users != 2) {
+        res.redirect('/logout')
+      } else {
+        res.render('user/index', {
+          email: data[0].email
+        })
+      }  
+    } else {
+      res.status(401).json({error: 'user tidak ada'})  
+    }   
+  } catch (error) {
+    res.status(501).json('butuh akses login')
+  }
 });
 
 router.get('/register', function(req, res, next) {
@@ -39,8 +51,15 @@ router.post('/login', async function(req, res) {
       let cek = await bcrypt.compare(password, enkripsi)
       if (cek) {
         req.session.userId = data[0].id_user
-        req.flash('success', 'Berhasil Login')
-        res.redirect('/')
+        if (data[0].level_users == 1) {
+          res.redirect('/super')
+        } else if(data[0].level_users ==2) {
+          res.redirect('/')
+        } else {
+          req.flash('eror', 'gagal')
+          res.redirect('/login')
+        }
+        
       } else {
         req.flash('error', 'Email atau password salah')
         res.redirect('/login')

@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/usernavbar.ejs')%>
+        <div class="row">
+            <div class="col">
+                <a href="/produk/create" class="btn btn-sm btn-success">tambah</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"></th>
+                            <th scope="col">Nama produk</th>
+                            <th scope="col">Harga produk</th>
+                            <th scope="col">Nama Kapal</th>
+                            <th colspan="2" scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < data.length; i++){ %>
+                            <tr>
+                                <th scope="row"><%= (i+1)%></th>
+                                <td><img src="/images/upload/<%= data[i].foto_produk %>" height="100"></td>
+                                <td><%= data[i].nama_produk %></td>
+                                <td><%= data[i].harga_produk %></td>
+                                <td><%= data[i].nama_kapal %></td>
+                                <td>
+                                    <a href="/produk/edit/<%= data[i].id_produk %>" class="btn btn-sm btn-warning">edit</a>
+                                    <a href="/produk/delete/<%= data[i].id_produk %>" class="btn btn-sm btn-danger">delete</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer.ejs') %>
