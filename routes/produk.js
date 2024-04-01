@@ -94,7 +94,7 @@ router.post('/update/(:id)', upload.single("foto_produk"), async function(req,re
         foto_produk
     }
     Model_produk.Update(id, Data);
-    req.flash('success', 'Berhasil menyimpan data');
+    req.flash('success', 'Berhasil update data');
     res.redirect('/produk')
 })
 
